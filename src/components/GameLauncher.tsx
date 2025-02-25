@@ -2,6 +2,7 @@
 import React, { useState } from "react";
 import { useRouter } from "next/navigation";
 import { GameInfo } from "@/lib/type";
+import Image from "next/image";
 
 const GameLauncher: React.FC = () => {
   const router = useRouter();
@@ -13,7 +14,7 @@ const GameLauncher: React.FC = () => {
       title: "Clicker",
       description:
         "Click your way to riches in this addictive idle clicker game. Upgrade your clicks, earn passive income, and become a clicking tycoon!",
-      thumbnail: "/images/clicker-thumbnail.jpg",
+      thumbnail: "/images/clicker.png",
       path: "/game/clicker",
       tags: ["Idle", "Progression", "Economy"],
     },
@@ -63,17 +64,12 @@ const GameLauncher: React.FC = () => {
           >
             {/* Game thumbnail */}
             <div className="aspect-video bg-gray-700 relative">
-              {/* In a real app, use an actual image here */}
-              <div className="absolute inset-0 flex items-center justify-center text-2xl font-bold">
-                {game.title}
-              </div>
-
-              {/* Optional: Show "last played" indicator */}
-              {game.lastPlayed && (
-                <div className="absolute bottom-2 left-2 bg-black bg-opacity-70 text-xs px-2 py-1 rounded">
-                  Last played: {game.lastPlayed.toLocaleDateString()}
-                </div>
-              )}
+              <Image
+                src={game.thumbnail}
+                alt="Clicker Game"
+                width={500}
+                height={100}
+              />
             </div>
 
             {/* Game info */}
